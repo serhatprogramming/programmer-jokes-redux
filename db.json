@@ -26,8 +26,8 @@
     },
     {
       "joke": "Test Add Joke",
-      "votes": 0,
-      "favorite": false,
+      "votes": 1,
+      "favorite": true,
       "id": 5
     }
   ]

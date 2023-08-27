@@ -5,18 +5,26 @@ import {
   toggleFavorite,
 } from "../reducers/jokeReducer";
 
+import jokeService from "../services/jokeService";
+
 const Joke = ({ joke }) => {
   const dispatch = useDispatch();
 
-  const handleUpvote = () => {
+  const handleUpvote = async () => {
+    await jokeService.updateJoke(joke.id, { ...joke, votes: joke.votes + 1 });
     dispatch(upvoteJoke(joke.id));
   };
 
-  const handleDownvote = () => {
+  const handleDownvote = async () => {
+    await jokeService.updateJoke(joke.id, { ...joke, votes: joke.votes - 1 });
     dispatch(downvoteJoke(joke.id));
   };
 
-  const handleToggleFavorite = () => {
+  const handleToggleFavorite = async () => {
+    await jokeService.updateJoke(joke.id, {
+      ...joke,
+      favorite: !joke.favorite,
+    });
     dispatch(toggleFavorite(joke.id));
   };
 
