@@ -3,13 +3,13 @@
     {
       "id": 1,
       "joke": "How do you comfort a JavaScript bug? You console it.",
-      "votes": 0,
+      "votes": 8,
       "favorite": false
     },
     {
       "id": 2,
       "joke": "Why did the React component go to the doctor? Because it couldn't setState.",
-      "votes": 0,
+      "votes": -5,
       "favorite": false
     },
     {
@@ -22,13 +22,21 @@
       "id": 4,
       "joke": "What did the database say to the website? Let me handle the queries",
       "votes": 0,
-      "favorite": false
+      "favorite": false,
+      "urgent": false
     },
     {
       "joke": "Test Add Joke",
       "votes": 1,
       "favorite": true,
       "id": 5
+    },
+    {
+      "joke": "Test Async Action Creator",
+      "votes": 0,
+      "favorite": true,
+      "id": 6,
+      "urgent": true
     }
   ]
 }

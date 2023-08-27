@@ -1,7 +1,5 @@
 import { useDispatch } from "react-redux";
-import { addJoke } from "../reducers/jokeReducer";
-
-import jokeService from "../services/jokeService";
+import { addNewJoke } from "../reducers/jokeReducer";
 
 const JokeForm = () => {
   const dispatch = useDispatch();
@@ -9,12 +7,7 @@ const JokeForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const jokeText = event.target.joke.value;
-    const addedJoke = await jokeService.createJoke({
-      joke: jokeText,
-      votes: 0,
-      favorite: false,
-    });
-    dispatch(addJoke(addedJoke));
+    dispatch(addNewJoke(jokeText));
     event.target.joke.value = "";
   };
 

@@ -1,31 +1,19 @@
 import { useDispatch } from "react-redux";
-import {
-  upvoteJoke,
-  downvoteJoke,
-  toggleFavorite,
-} from "../reducers/jokeReducer";
-
-import jokeService from "../services/jokeService";
+import { upvote, downvote, toggleJokeFavorite } from "../reducers/jokeReducer";
 
 const Joke = ({ joke }) => {
   const dispatch = useDispatch();
 
   const handleUpvote = async () => {
-    await jokeService.updateJoke(joke.id, { ...joke, votes: joke.votes + 1 });
-    dispatch(upvoteJoke(joke.id));
+    dispatch(upvote(joke));
   };
 
   const handleDownvote = async () => {
-    await jokeService.updateJoke(joke.id, { ...joke, votes: joke.votes - 1 });
-    dispatch(downvoteJoke(joke.id));
+    dispatch(downvote(joke));
   };
 
   const handleToggleFavorite = async () => {
-    await jokeService.updateJoke(joke.id, {
-      ...joke,
-      favorite: !joke.favorite,
-    });
-    dispatch(toggleFavorite(joke.id));
+    dispatch(toggleJokeFavorite(joke));
   };
 
   return (

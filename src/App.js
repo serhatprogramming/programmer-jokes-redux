@@ -4,13 +4,12 @@ import JokeForm from "./components/JokeForm";
 
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import jokeService from "./services/jokeService";
-import { setJokes } from "./reducers/jokeReducer";
+import { fetchInitJokes } from "./reducers/jokeReducer";
 
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    jokeService.getJokes().then((jokes) => dispatch(setJokes(jokes)));
+    dispatch(fetchInitJokes());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
