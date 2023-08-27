@@ -1,3 +1,5 @@
+import { createSlice } from "@reduxjs/toolkit";
+
 const initialState = [
   {
     id: 1,
@@ -33,28 +35,38 @@ const createJoke = (jokeText) => ({
   favorite: false,
 });
 
-const jokeReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "ADD_JOKE":
+const jokeSlice = createSlice({
+  name: "jokes",
+  initialState,
+  reducers: {
+    addJoke: (state, action) => {
       const newJoke = createJoke(action.payload);
-      return [...state, newJoke];
-    case "UPVOTE_JOKE":
-      return state.map((joke) =>
-        joke.id === action.payload ? { ...joke, votes: joke.votes + 1 } : joke
-      );
-    case "DOWNVOTE_JOKE":
-      return state.map((joke) =>
-        joke.id === action.payload ? { ...joke, votes: joke.votes - 1 } : joke
-      );
-    case "TOGGLE_FAVORITE":
-      return state.map((joke) =>
-        joke.id === action.payload
-          ? { ...joke, favorite: !joke.favorite }
-          : joke
-      );
-    default:
-      return state;
-  }
-};
+      state.push(newJoke);
+    },
+    upvoteJoke: (state, action) => {
+      const jokeId = action.payload;
+      const joke = state.find((j) => j.id === jokeId);
+      if (joke) {
+        joke.votes += 1;
+      }
+    },
+    downvoteJoke: (state, action) => {
+      const jokeId = action.payload;
+      const joke = state.find((j) => j.id === jokeId);
+      if (joke) {
+        joke.votes -= 1;
+      }
+    },
+    toggleFavorite: (state, action) => {
+      const jokeId = action.payload;
+      const joke = state.find((j) => j.id === jokeId);
+      if (joke) {
+        joke.favorite = !joke.favorite;
+      }
+    },
+  },
+});
 
-export default jokeReducer;
+export const { addJoke, upvoteJoke, downvoteJoke, toggleFavorite } =
+  jokeSlice.actions;
+export default jokeSlice.reducer;

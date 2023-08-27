@@ -3,7 +3,7 @@ import {
   upvoteJoke,
   downvoteJoke,
   toggleFavorite,
-} from "../actions/jokeActions";
+} from "../reducers/jokeReducer";
 
 const Joke = ({ joke }) => {
   const dispatch = useDispatch();

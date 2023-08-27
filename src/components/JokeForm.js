@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { addJoke } from "../actions/jokeActions";
+import { addJoke } from "../reducers/jokeReducer";
 
 const JokeForm = () => {
   const dispatch = useDispatch();
