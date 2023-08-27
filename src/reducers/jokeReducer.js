@@ -40,9 +40,12 @@ const jokeSlice = createSlice({
         joke.favorite = !joke.favorite;
       }
     },
+    setJokes: (state, action) => {
+      return action.payload;
+    },
   },
 });
 
-export const { addJoke, upvoteJoke, downvoteJoke, toggleFavorite } =
+export const { addJoke, upvoteJoke, downvoteJoke, toggleFavorite, setJokes } =
   jokeSlice.actions;
 export default jokeSlice.reducer;
