@@ -4,20 +4,12 @@ const initialState = [
   // Add more jokes here
 ];
 
-const createJoke = (jokeText) => ({
-  id: Math.random().toString(36).substring(7),
-  joke: jokeText,
-  votes: 0,
-  favorite: false,
-});
-
 const jokeSlice = createSlice({
   name: "jokes",
   initialState,
   reducers: {
     addJoke: (state, action) => {
-      const newJoke = createJoke(action.payload);
-      state.push(newJoke);
+      state.push(action.payload);
     },
     upvoteJoke: (state, action) => {
       const jokeId = action.payload;

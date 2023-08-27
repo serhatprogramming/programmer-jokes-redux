@@ -23,6 +23,12 @@
       "joke": "What did the database say to the website? Let me handle the queries",
       "votes": 0,
       "favorite": false
+    },
+    {
+      "joke": "Test Add Joke",
+      "votes": 0,
+      "favorite": false,
+      "id": 5
     }
   ]
 }
